@@ -50,7 +50,6 @@ A lightweight, non-destructive Python command-line utility that splits Markdown 
 Welcome to splitPhorge v1.12.1 by Old Man Umby!
 
 Please place the file in the 'Input' folder and press [Enter/Return] to continue...
-
 > [User presses Enter]
 
 Found file: Rules_Glossary.md
