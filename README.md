@@ -26,7 +26,7 @@ A lightweight, non-destructive Python command-line utility that splits Markdown 
 1. Place the `splitPhorge.py` script in a folder of your choice and run it using Python:
 
    ```
-   python splitPhorge.py
+   python3 splitPhorge.py
    ```
 
 2. The app will automatically generate two folders alongside it: `Input` and `Output`.

@@ -48,10 +48,10 @@ def main():
                 print("\nInvalid header level. Please try again.")
 
         print("\nWould you like to convert the split headers to a different level while outputting?")
-        print(" This ONLY changes the headers where the split occurs, not other nested headers.")
+        print("Note: This ONLY changes the headers where the split occurs, not other nested headers.")
         
         while True:
-            target_header_input = input("\nEnter the output header level for the split (H1-H6) [Default: Leave as is]:\n> ").strip().upper()
+            target_header_input = input("\nEnter the new output header level for the split (H1-H6) [Default: Leave as is]:\n> ").strip().upper()
             
             target_header_level = None
             if not target_header_input:
@@ -174,7 +174,7 @@ def main():
         except Exception as e:
             print(f"\nAn error occurred: {e}")
 
-        if input("\nDo you want to process another batch of files? (y/n):\n> ").strip().lower() != 'y':
+        if input("\nDo you want to process another file? (y/n):\n> ").strip().lower() != 'y':
             print("\nExiting splitPhorge. Goodbye!")
             break
 
