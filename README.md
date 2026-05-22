@@ -44,6 +44,75 @@ A lightweight, non-destructive Python command-line utility that splits Markdown 
    - **Prefix:** Add a prefix for the exported files or press `Enter` to skip.
    - **Continue:** When the split is complete, remove the old file from the `Input` folder, place a new one, and type `y` to process another document, or `n` to quit.
 
+## Sample Prompts
+
+```
+Welcome to splitPhorge v1.12.1 by Old Man Umby!
+
+Please place the file in the 'Input' folder and press [Enter/Return] to continue...
+
+> [User presses Enter]
+
+Found file: Rules_Glossary.md
+
+Enter the header level to begin each split (H1-H6) [Default: H1]:
+> H1
+
+Would you like to convert the split headers to a different level while outputting?
+Note: This ONLY changes the headers where the split occurs, not other nested headers.
+
+Enter the new output header level for the split (H1-H6) [Default: Leave as is]:
+> 
+
+Export Options:
+
+1. Export to Individual Files
+2. Export to A-Z Files
+
+Select export type (1 or 2):
+> 2
+
+Enter an optional filename prefix (e.g., 'Magic Spells - ') or press Enter to skip:
+> Glossary_
+
+Splitting file...
+  -> Created: Output/Glossary_A.md
+  -> Created: Output/Glossary_B.md
+  -> Created: Output/Glossary_C.md
+  -> Created: Output/Glossary_D.md
+  -> Created: Output/Glossary_E.md
+  -> Created: Output/Glossary_F.md
+  -> Created: Output/Glossary_G.md
+  -> Created: Output/Glossary_H.md
+  -> Created: Output/Glossary_I.md
+  -> Created: Output/Glossary_J.md
+  -> Created: Output/Glossary_K.md
+  -> Created: Output/Glossary_L.md
+  -> Created: Output/Glossary_M.md
+  -> Created: Output/Glossary_N.md
+  -> Created: Output/Glossary_O.md
+  -> Created: Output/Glossary_P.md
+  -> Created: Output/Glossary_Q.md
+  -> Created: Output/Glossary_R.md
+  -> Created: Output/Glossary_S.md
+  -> Created: Output/Glossary_T.md
+  -> Created: Output/Glossary_U.md
+  -> Created: Output/Glossary_V.md
+  -> Created: Output/Glossary_W.md
+  -> Created: Output/Glossary_X.md
+  -> Created: Output/Glossary_Y.md
+  -> Created: Output/Glossary_Z.md
+  -> Created: Output/Glossary_Misc.md
+
+Splitting complete!
+Total sections processed: 87
+
+Do you want to process another file? (y/n):
+> n
+
+Exiting splitPhorge. Goodbye!
+```
+
 ## License
 
 This project is open-source and available under the [GNU General Public License v3.0 (GPL-3.0)](LICENSE.txt).
