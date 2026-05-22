@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file.
 
+## [v1.11]
+
+### Added
+
+- **UI Uniformity & Welcome Message:** Added a "Welcome to splitPhorge" banner displaying the current version and author at startup. Improved general readability by adding line breaks and a `> `prompt indicator for all interactive user questions.
+- **Input Validation Loops:** Replaced silent default fallbacks with strict input validation. The app now requires users to enter a valid option (or explicitly leave blank for the default) for header levels and export types, prompting them to "try again" if an invalid entry is detected.
+- **End Prompt Clarification:** Updated the final loop prompt to ask "Do you want to process another batch of files?" for clearer workflow semantics.
+
 ## [v1.10]
 
 ### Changed
@@ -12,8 +20,7 @@ All notable changes to this project will be documented in this file.
 
 ### Changed
 
-- **Folder-Based Workflow:** Replaced the filename typing prompt with a streamlined, folder-based approach. The app now automatically generates and reads from a `Process` directory, and outputs to an `Exports` directory. The user simply places a single Markdown file in the `Process` folder and hits Enter.
-- Renamed the default output directory from `Exported Files` to `Exports`.
+- **Folder-Based Workflow:** Replaced the filename typing prompt with a streamlined, folder-based approach. The app now automatically generates and reads from an `Input` directory, and outputs to an `Output` directory. The user simply places a single Markdown file in the `Input` folder and hits Enter.
 
 ## [v1.8]
 
@@ -69,7 +76,7 @@ All notable changes to this project will be documented in this file.
 
 - **A-Z Grouping Export Mode:** Introduced a secondary export type that alphabetically compiles all sections into grouped files (`A.md`, `B.md`, `Z.md`), numbers (`0.md` to `9.md`), and a `Misc.md` file. Missing alphabetical letters are automatically populated with placeholder text.
 - **Custom Prefixes:** Added an optional prompt allowing users to prepend a custom string (e.g., `Magic Spells - `) to all exported filenames.
-- **Continuous Workflow:** Encased the main script in a `while True` loop, prompting the user if they want to split another file before quitting the app.
+- **Continuous Workflow:** Encased the main script in a `while True` loop, prompting the user if they want to process another batch of files before quitting the app.
 
 ## [v1.0]
 
@@ -77,5 +84,5 @@ All notable changes to this project will be documented in this file.
 
 - Initial creation of `splitPhorge.py`.
 - Core functionality to non-destructively parse and split Markdown documents based on specific heading levels (H1 through H6).
-- Automatic generation of the `Exported Files` destination directory.
+- Automatic generation of the destination directory.
 - Exports individual Markdown files dynamically named using their corresponding header text.

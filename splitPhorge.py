@@ -1,5 +1,5 @@
-# splitPhorge v1.10
-# Updates: Changed folder names from Process/Exports to Input/Output.
+# splitPhorge v1.11
+# Updates: Require valid inputs instead of auto-proceeding on invalid entries.
 
 import os
 import re
@@ -14,55 +14,66 @@ def main():
     os.makedirs(export_dir, exist_ok=True)
 
     while True:
-        print("\n--- splitPhorge ---")
+        print("\nWelcome to splitPhorge v1.11 by Old Man Umby!")
         
-        input(f"Please place the file in the {process_dir} folder and hit [Enter/Return] to continue...")
+        input(f"\nPlease place the file in the '{process_dir}' folder and press [Enter/Return] to continue...\n> ")
 
         # Scan the Input folder for markdown files
         md_files = [f for f in os.listdir(process_dir) if f.lower().endswith('.md')]
 
         if len(md_files) == 0:
-            print(f"Error: No markdown (.md) files found in the '{process_dir}' folder.")
-            if input("Do you want to try again? (y/n): ").strip().lower() != 'y':
+            print(f"\nError: No markdown (.md) files found in the '{process_dir}' folder.")
+            if input("\nDo you want to try again? (y/n):\n> ").strip().lower() != 'y':
                 break
             continue
         elif len(md_files) > 1:
-            print(f"Error: Multiple markdown files found in the '{process_dir}' folder.")
+            print(f"\nError: Multiple markdown files found in the '{process_dir}' folder.")
             print("Please ensure only ONE file is placed in the folder to process.")
-            if input("Do you want to try again? (y/n): ").strip().lower() != 'y':
+            if input("\nDo you want to try again? (y/n):\n> ").strip().lower() != 'y':
                 break
             continue
 
         filename = os.path.join(process_dir, md_files[0])
         print(f"\nFound file: {md_files[0]}")
 
-        header_input = input("Enter the header level to split by (H1-H6) [Default: H1]: ").strip().upper()
-        if not header_input:
-            header_input = "H1"
-        
-        if header_input not in [f"H{i}" for i in range(1, 7)]:
-            print("Invalid header level. Defaulting to H1.")
-            header_input = "H1"
+        while True:
+            header_input = input("\nEnter the header level to begin each split (H1-H6) [Default: H1]:\n> ").strip().upper()
+            if not header_input:
+                header_input = "H1"
+                break
+            
+            if header_input in [f"H{i}" for i in range(1, 7)]:
+                break
+            else:
+                print("\nInvalid header level. Please try again.")
 
-        print("\n(Note: You can optionally convert the split headers to a different level.")
-        print(" This ONLY changes the headers where the split occurs, not nested headers.)")
-        target_header_input = input("Enter the target header level for the split (H1-H6) [Default: Leave as is]: ").strip().upper()
+        print("\nWould you like to convert the split headers to a different level while outputting?")
+        print(" This ONLY changes the headers where the split occurs, not other nested headers.")
         
-        target_header_level = None
-        if target_header_input in [f"H{i}" for i in range(1, 7)]:
-            target_header_level = int(target_header_input[1])
-        elif target_header_input:
-            print("Invalid target level. Leaving headers as is.")
+        while True:
+            target_header_input = input("\nEnter the output header level for the split (H1-H6) [Default: Leave as is]:\n> ").strip().upper()
+            
+            target_header_level = None
+            if not target_header_input:
+                break
+                
+            if target_header_input in [f"H{i}" for i in range(1, 7)]:
+                target_header_level = int(target_header_input[1])
+                break
+            else:
+                print("\nInvalid target level. Please try again.")
 
         print("\nExport Options:")
         print("1. Export to Individual Files")
         print("2. Export to A-Z Files")
-        export_type = input("Select export type (1 or 2): ").strip()
-        if export_type not in ['1', '2']:
-            print("Invalid option. Defaulting to 1 (Individual Files).")
-            export_type = '1'
+        while True:
+            export_type = input("\nSelect export type (1 or 2):\n> ").strip()
+            if export_type in ['1', '2']:
+                break
+            else:
+                print("\nInvalid option. Please try again.")
 
-        file_prefix = input("Enter an optional filename prefix (e.g., 'Magic Spells - ') or press Enter to skip: ")
+        file_prefix = input("\nEnter an optional filename prefix (e.g., 'Magic Spells - ') or press Enter to skip:\n> ")
 
         # Determine the prefix string (e.g., "### " for H3)
         header_level = int(header_input[1])
@@ -77,7 +88,7 @@ def main():
             matches = list(re.finditer(pattern, content))
 
             if not matches:
-                print(f"No {header_input} headers found in {md_files[0]}.")
+                print(f"\nNo {header_input} headers found in {md_files[0]}.")
             else:
                 chunks = []
                 for i, match in enumerate(matches):
@@ -161,10 +172,10 @@ def main():
                 print(f"Total sections processed: {len(chunks)}")
 
         except Exception as e:
-            print(f"An error occurred: {e}")
+            print(f"\nAn error occurred: {e}")
 
-        if input("\nDo you have another file to split? (y/n): ").strip().lower() != 'y':
-            print("Exiting splitPhorge. Goodbye!")
+        if input("\nDo you want to process another batch of files? (y/n):\n> ").strip().lower() != 'y':
+            print("\nExiting splitPhorge. Goodbye!")
             break
 
 if __name__ == "__main__":
