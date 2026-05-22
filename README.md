@@ -1,3 +1,5 @@
+![Apps rePhorged](Apps_rePhorged.png)
+
 # splitPhorge
 
 A lightweight, non-destructive Python command-line utility that splits Markdown documents into smaller files based on specified heading levels.
@@ -26,7 +28,7 @@ A lightweight, non-destructive Python command-line utility that splits Markdown 
 1. Place the `splitPhorge.py` script in a folder of your choice and run it using Python:
 
    ```
-   python3 splitPhorge.py
+   python splitPhorge.py
    ```
 
 2. The app will automatically generate two folders alongside it: `Input` and `Output`.
@@ -44,4 +46,4 @@ A lightweight, non-destructive Python command-line utility that splits Markdown 
 
 ## License
 
-This project is open-source and available under the MIT License.
+This project is open-source and available under the [GNU General Public License v3.0 (GPL-3.0)](LICENSE.txt).

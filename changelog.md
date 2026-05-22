@@ -2,13 +2,26 @@
 
 All notable changes to this project will be documented in this file.
 
+## [v1.12.1]
+
+### Changed
+
+- **License Update:** Transitioned the project license from MIT to the GNU General Public License v3.0 (GPL-3.0). Updated the script metadata and README to reflect this change.
+
+## [v1.12.0]
+
+### Added
+
+- **Metadata Header:** Integrated a standardized Python metadata block at the top of the script (including author, copyright, license, version, etc.) to formalize project tracking.
+- **Dynamic Versioning:** The welcome message now dynamically pulls the version number directly from the `__version__` metadata variable.
+
 ## [v1.11]
 
 ### Added
 
 - **UI Uniformity & Welcome Message:** Added a "Welcome to splitPhorge" banner displaying the current version and author at startup. Improved general readability by adding line breaks and a `> `prompt indicator for all interactive user questions.
 - **Input Validation Loops:** Replaced silent default fallbacks with strict input validation. The app now requires users to enter a valid option (or explicitly leave blank for the default) for header levels and export types, prompting them to "try again" if an invalid entry is detected.
-- **End Prompt Clarification:** Updated the final loop prompt to ask "Do you want to process another batch of files?" for clearer workflow semantics.
+- **End Prompt Clarification:** Updated the final loop prompt to ask "Do you want to process another file?" for clearer workflow semantics.
 
 ## [v1.10]
 

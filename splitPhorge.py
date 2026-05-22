@@ -1,5 +1,21 @@
-# splitPhorge v1.11
-# Updates: Require valid inputs instead of auto-proceeding on invalid entries.
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
+"""
+splitPhorge
+
+A lightweight, non-destructive Python command-line utility that splits Markdown documents into smaller files based on specified heading levels.
+
+Website: https://code.oldmanumby.com
+"""
+
+__author__ = "B.A. Umberger (Old Man Umby)"
+__copyright__ = "Copyright 2026, B.A. Umberger"
+__credits__ = ["B.A. Umberger"]
+__license__ = "GPL-3.0"
+__version__ = "1.12.1"
+__maintainer__ = "B.A. Umberger"
+__status__ = "Production"
 
 import os
 import re
@@ -14,7 +30,7 @@ def main():
     os.makedirs(export_dir, exist_ok=True)
 
     while True:
-        print("\nWelcome to splitPhorge v1.11 by Old Man Umby!")
+        print(f"\nWelcome to splitPhorge v{__version__} by Old Man Umby!")
         
         input(f"\nPlease place the file in the '{process_dir}' folder and press [Enter/Return] to continue...\n> ")
 
