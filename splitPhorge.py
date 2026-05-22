@@ -1,23 +1,40 @@
-# splitPhorge v1.6
-# Updates: Added option to convert split header levels during export.
+# splitPhorge v1.10
+# Updates: Changed folder names from Process/Exports to Input/Output.
 
 import os
 import re
 import string
 
 def main():
+    process_dir = "Input"
+    export_dir = "Output"
+
+    # Ensure the root folders exist when the app starts
+    os.makedirs(process_dir, exist_ok=True)
+    os.makedirs(export_dir, exist_ok=True)
+
     while True:
         print("\n--- splitPhorge ---")
+        
+        input(f"Please place the file in the {process_dir} folder and hit [Enter/Return] to continue...")
 
-        filename = input("Enter the name of the markdown file (e.g., source.md): ").strip()
-        if not filename.endswith('.md'):
-            filename += '.md'
+        # Scan the Input folder for markdown files
+        md_files = [f for f in os.listdir(process_dir) if f.lower().endswith('.md')]
 
-        if not os.path.exists(filename):
-            print(f"Error: File '{filename}' not found in the current directory.")
-            if input("Do you have another file to split? (y/n): ").strip().lower() != 'y':
+        if len(md_files) == 0:
+            print(f"Error: No markdown (.md) files found in the '{process_dir}' folder.")
+            if input("Do you want to try again? (y/n): ").strip().lower() != 'y':
                 break
             continue
+        elif len(md_files) > 1:
+            print(f"Error: Multiple markdown files found in the '{process_dir}' folder.")
+            print("Please ensure only ONE file is placed in the folder to process.")
+            if input("Do you want to try again? (y/n): ").strip().lower() != 'y':
+                break
+            continue
+
+        filename = os.path.join(process_dir, md_files[0])
+        print(f"\nFound file: {md_files[0]}")
 
         header_input = input("Enter the header level to split by (H1-H6) [Default: H1]: ").strip().upper()
         if not header_input:
@@ -60,11 +77,8 @@ def main():
             matches = list(re.finditer(pattern, content))
 
             if not matches:
-                print(f"No {header_input} headers found in {filename}.")
+                print(f"No {header_input} headers found in {md_files[0]}.")
             else:
-                export_dir = "Exported Files"
-                os.makedirs(export_dir, exist_ok=True)
-                
                 chunks = []
                 for i, match in enumerate(matches):
                     start = match.start()
@@ -80,6 +94,9 @@ def main():
                     # The FIX: .strip() removes all leading/trailing extra blank lines from the chunk
                     chunk_text = chunk_text_raw.strip()
                     header_text = match.group(1).strip()
+                    
+                    # Strip leading and trailing markdown formatting (*, _, -, ~, `) for clean filenames
+                    header_text = re.sub(r'^[*_\-~`\s]+|[*_\-~`\s]+$', '', header_text)
                     
                     # Fallback if the header is just empty symbols
                     if not header_text:
@@ -112,7 +129,10 @@ def main():
                     groups['Misc'] = []
 
                     for header_text, chunk_text in chunks:
-                        first_char = header_text[0].upper()
+                        # Find the true first alphanumeric character for sorting, bypassing ** or _
+                        match_char = re.search(r'[A-Za-z0-9]', header_text)
+                        first_char = match_char.group(0).upper() if match_char else 'Misc'
+                        
                         if first_char in groups:
                             groups[first_char].append(chunk_text)
                         else:
