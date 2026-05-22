@@ -4,7 +4,8 @@
 """
 splitPhorge
 
-A lightweight, non-destructive Python command-line utility that splits Markdown documents into smaller files based on specified heading levels.
+A lightweight, non-destructive Python command-line utility that splits
+Markdown documents into smaller files based on specified heading levels.
 
 Website: https://code.oldmanumby.com
 """
