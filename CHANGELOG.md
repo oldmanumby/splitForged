@@ -1,4 +1,4 @@
-# splitPhorge Changelog
+# splitForged Changelog
 
 All notable changes to this project will be documented in this file.
 
@@ -19,7 +19,7 @@ All notable changes to this project will be documented in this file.
 
 ### Added
 
-- **UI Uniformity & Welcome Message:** Added a "Welcome to splitPhorge" banner displaying the current version and author at startup. Improved general readability by adding line breaks and a `> `prompt indicator for all interactive user questions.
+- **UI Uniformity & Welcome Message:** Added a "Welcome to splitForged" banner displaying the current version and author at startup. Improved general readability by adding line breaks and a `> `prompt indicator for all interactive user questions.
 - **Input Validation Loops:** Replaced silent default fallbacks with strict input validation. The app now requires users to enter a valid option (or explicitly leave blank for the default) for header levels and export types, prompting them to "try again" if an invalid entry is detected.
 - **End Prompt Clarification:** Updated the final loop prompt to ask "Do you want to process another file?" for clearer workflow semantics.
 
@@ -95,7 +95,7 @@ All notable changes to this project will be documented in this file.
 
 ### Added
 
-- Initial creation of `splitPhorge.py`.
+- Initial creation of `splitForged.py`.
 - Core functionality to non-destructively parse and split Markdown documents based on specific heading levels (H1 through H6).
 - Automatic generation of the destination directory.
 - Exports individual Markdown files dynamically named using their corresponding header text.

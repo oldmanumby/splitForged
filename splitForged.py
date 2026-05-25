@@ -2,10 +2,10 @@
 # -*- coding: utf-8 -*-
 
 """
-splitPhorge
+splitForged
 
 A lightweight, non-destructive Python command-line utility that splits
-Markdown documents into smaller files based on specified heading levels.
+markdown documents into smaller files based on specified heading levels.
 
 Website: https://code.oldmanumby.com
 """
@@ -31,7 +31,7 @@ def main():
     os.makedirs(export_dir, exist_ok=True)
 
     while True:
-        print(f"\nWelcome to splitPhorge v{__version__} by Old Man Umby!")
+        print(f"\nWelcome to splitForged v{__version__} by Old Man Umby!")
         
         input(f"\nPlease place the file in the '{process_dir}' folder and press [Enter/Return] to continue...\n> ")
 
@@ -192,7 +192,7 @@ def main():
             print(f"\nAn error occurred: {e}")
 
         if input("\nDo you want to process another file? (y/n):\n> ").strip().lower() != 'y':
-            print("\nExiting splitPhorge. Goodbye!")
+            print("\nExiting splitForged. Goodbye!")
             break
 
 if __name__ == "__main__":

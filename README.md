@@ -1,8 +1,8 @@
-![Apps rePhorged](Apps_rePhorged.png)
+![Apps-reForged](Apps-reForged.png)
 
-# splitPhorge
+# splitForged
 
-A lightweight, non-destructive Python command-line utility that splits Markdown documents into smaller files based on specified heading levels.
+A lightweight, non-destructive Python command-line utility that splits markdown documents into smaller files based on specified heading levels.
 
 ## Features
 
@@ -25,10 +25,10 @@ A lightweight, non-destructive Python command-line utility that splits Markdown 
 
 ## Usage
 
-1. Place the `splitPhorge.py` script in a folder of your choice and run it using Python:
+1. Place the `splitForged.py` script in a folder of your choice and run it using Python:
 
    ```
-   python3 splitPhorge.py
+   python3 splitForged.py
    ```
 
 2. The app will automatically generate two folders alongside it: `Input` and `Output`.
@@ -47,7 +47,7 @@ A lightweight, non-destructive Python command-line utility that splits Markdown 
 ## Sample Prompts
 
 ```
-Welcome to splitPhorge v1.12.1 by Old Man Umby!
+Welcome to splitForged v1.12.1 by Old Man Umby!
 
 Please place the file in the 'Input' folder and press [Enter/Return] to continue...
 > [User presses Enter]
@@ -109,7 +109,7 @@ Total sections processed: 87
 Do you want to process another file? (y/n):
 > n
 
-Exiting splitPhorge. Goodbye!
+Exiting splitForged. Goodbye!
 ```
 
 ## License
